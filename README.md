@@ -21,10 +21,10 @@ This gives us ~98% accuracy on live testing with web camera.
 The model predicts the probability of each of the 3 classes. We display the class with max probability.
 
 The plot of accuracy, loss, precision and recall are as follows:<br><br>
-<img src = "accuracy.png" alt = "accuracy">.<br><br>
-<img src = "loss.png" alt = "loss">.<br><br>
-<img src = "precision.png" alt = "precision">.<br><br>
-<img src = "recall.png" alt = "recall">.<br><br>
+<img src = "images-readme/accuracy.png" alt = "accuracy">.<br><br>
+<img src = "images-readme/loss.png" alt = "loss">.<br><br>
+<img src = "images-readme/precision.png" alt = "precision">.<br><br>
+<img src = "images-readme/recall.png" alt = "recall">.<br><br>
 
 ## GUI:
 For the Frontend we use vanilla js, HTML, CSS. <br>
