@@ -15,13 +15,17 @@ After building and testing custom models, the accuracy was low. We currently use
 The library used for backend processing is <a href = "https://keras.io/getting_started/">Keras</a>.
 
 This is a snap of plot_model:<br><br>
-<img src = "1.png" alt="plot_model" width="400" height="1700" >
+<img src = "1.png" alt="plot_model" width="400" height="700" >
 
 This gives us ~98% accuracy on live testing with web camera.
 The model predicts the probability of each of the 3 classes. We display the class with max probability.
 
-The plot of accuracy, loss, precision and recall are as follows:
-<img src = "accuracy.png" alt = "accuracy">.
+The plot of accuracy, loss, precision and recall are as follows:<br><br>
+<img src = "accuracy.png" alt = "accuracy">.<br><br>
+<img src = "loss.png" alt = "loss">.<br><br>
+<img src = "precision.png" alt = "precision">.<br><br>
+<img src = "recall.png" alt = "recall">.<br><br>
+
 ## GUI:
 For the Frontend we use vanilla js, HTML, CSS. <br>
 For the Backend we use <a href = "https://flask.palletsprojects.com/en/1.1.x/">Flask</a> and communicate with the HTML templates using <a href="http://jinja.pocoo.org/docs"> Jinja</a> templating.
