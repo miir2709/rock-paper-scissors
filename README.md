@@ -18,7 +18,7 @@ The model predicts the probability of each of the 3 classes. We display the clas
 The library used for backend processing is <a href = "https://keras.io/getting_started/">Keras</a>.
 
 This is a snap of plot_model:<br><br>
-<img src = "download.png" alt="plot_model" width="400" height="1600" style = "display: block; margin-left: auto; margin-right: auto">
+<img src = "download.png" alt="plot_model" width="400" height="1700" >
 
 ## GUI:
 For the Frontend we use vanilla js, HTML, CSS. <br>
