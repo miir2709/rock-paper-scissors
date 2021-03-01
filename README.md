@@ -10,7 +10,7 @@ Please get the **dataset and the model** <a href = "https://drive.google.com/dri
 
 The dataset is generated using **captureImage.py** . Please press 'a' for starting the capturing of images.
 The dataset(train + validation) is ~1000 images. The 'test_images' folder contains the test images 600 images(200 * 3).
-After building and testing custom models, the accuracy was low. We currently use the concept of <a href = "https://thebinarynotes.com/transfer-learning-keras-vgg16/">tranfer learning</a> for our use case. We train the vgg16 model with 4 <a href = "https://keras.io/api/layers/core_layers/dense/">dense layers</a>, <a href = "https://developers.google.com/machine-learning/crash-course/regularization-for-simplicity/l2-regularization">l2 regularizers</a> to avoid <a href = "https://www.coursera.org/lecture/machine-learning/the-problem-of-overfitting-ACpTQ">overfitting</a> problem.
+After building and testing custom models, the accuracy was low. We currently use the concept of <a href = "https://thebinarynotes.com/transfer-learning-keras-vgg16/">tranfer learning</a> for our use case. We train the vgg16 model with 3 <a href = "https://keras.io/api/layers/core_layers/dense/">dense layers</a>, <a href = "https://developers.google.com/machine-learning/crash-course/regularization-for-simplicity/l2-regularization">l2 regularizers</a> to avoid <a href = "https://www.coursera.org/lecture/machine-learning/the-problem-of-overfitting-ACpTQ">overfitting</a> problem.
 
 The library used for backend processing is <a href = "https://keras.io/getting_started/">Keras</a>.
 
