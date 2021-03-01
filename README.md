@@ -15,7 +15,7 @@ After building and testing custom models, the accuracy was low. We currently use
 The library used for backend processing is <a href = "https://keras.io/getting_started/">Keras</a>.
 
 This is a snap of plot_model:<br><br>
-<img src = "1.png" alt="plot_model" width="400" height="700" >
+<img src = "images-readme/1.png" alt="plot_model" width="400" height="700" >
 
 This gives us ~98% accuracy on live testing with web camera.
 The model predicts the probability of each of the 3 classes. We display the class with max probability.
