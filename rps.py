@@ -24,7 +24,7 @@ def Home():
 def gen_frames():  # generate frame by frame from camera
     camera = cv2.VideoCapture(0)
     no = 0
-    count = 100
+    count = 50
     start = True
     while True:
         # Capture frame-by-frame
