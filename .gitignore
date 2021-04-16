@@ -1,2 +1,5 @@
 models
 __pycache__
+rps
+rps-pred
+rps-test-set
