@@ -9,9 +9,18 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+import play
 
 class Ui_RuleWindow(object):
+
+    def StartGame(self):
+        RuleWindow.hide()
+        scores = play.Start()
+        user = scores[0]
+        computer = scores[1]
+        print(user, computer)
+        RuleWindow.show()
+
     def setupUi(self, RuleWindow):
         RuleWindow.setObjectName("Rock Paper Scissor - Rules")
         RuleWindow.setFixedSize(885, 384)
@@ -33,7 +42,9 @@ class Ui_RuleWindow(object):
         self.statusbar = QtWidgets.QStatusBar(RuleWindow)
         self.statusbar.setObjectName("statusbar")
         RuleWindow.setStatusBar(self.statusbar)
-
+        self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_2.setGeometry(QtCore.QRect(120, 30, 75, 23))
+        self.pushButton_2.setObjectName("pushButton_2")
         self.retranslateUi(RuleWindow)
         QtCore.QMetaObject.connectSlotsByName(RuleWindow)
 
@@ -44,11 +55,12 @@ class Ui_RuleWindow(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><img src=\":/Rules/wp8121942.png\" /></p></body></html>"))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><img src=\"wp8121942.png\" /></p></body></html>"))
         self.label.setText(_translate("RuleWindow", "<html><head/>\n"
 "<body><ul><li><p><span style=\" font-size:14pt;\">Allow use of webcam to collect images</span></p></li><li><p><span style=\" font-size:14pt;\">Use three actions : rock, paper, scissors</span></p></li><li><p><span style=\" font-size:14pt;\">Use a plain background</span></p></li><li><p><span style=\" font-size:14pt;\">Rock crushes Scissors</span></p></li><li><p><span style=\" font-size:14pt;\">Scissors cuts Paper</span></p></li><li><p><span style=\" font-size:14pt;\">Paper covers Rock</span></p></li></ul></body></html>"))
-import rules_rc
-
+#import rules_rc
+        self.pushButton_2.setText(_translate("RuleWindow", "Start"))
+        self.pushButton_2.clicked.connect(self.StartGame)
 
 if __name__ == "__main__":
     import sys

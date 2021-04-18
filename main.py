@@ -23,7 +23,10 @@ class Ui_MainWindow(object):
 
     def StartGame(self):
         MainWindow.hide()
-        play.Start()
+        scores = play.Start()
+        user = scores[0]
+        computer = scores[1]
+        MainWindow.show()
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("Rock Paper Scissor - Home")

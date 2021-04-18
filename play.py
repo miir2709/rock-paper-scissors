@@ -32,10 +32,7 @@ def winnerOfOneRound(move1, move2):
 
 def Start():
     label_names = ['paper', 'rock', 'scissors']
-    model = load_model('vggmodel_28_02_final.h5')
-#    rock_img = cv2.imread('rock.png')
-#    paper_img = cv2.imread('paper.png')
-#    scissors_img = cv2.imread('scissors.png')
+    model = load_model('models/vggmodel_28_02_final.h5')
     comp_images = ['rock', 'paper', 'scissors']
     cap = cv2.VideoCapture(0)
     start = False
@@ -77,7 +74,7 @@ def Start():
             #icon = cv2.resize(icon, (400, 400))
             #frame[100:500, 800:1200] = icon
             cv2.putText(frame, f"User Action Round {no} : {label}", (5,50), font, 0.7, (0, 255, 255), 2, cv2.LINE_AA)
-            cv2.putText(frame, f"Winner Of Round {no} : {winner}", (300,50), font, 0.7, (0, 255, 255), 2, cv2.LINE_AA)
+            cv2.putText(frame, f"Winner Of Round {no} : {winner}", (400,50), font, 0.7, (0, 255, 255), 2, cv2.LINE_AA)
             cv2.putText(frame, f"User Score: {countScoreOfUser} | Computer Score: {countScoreofComputer}", (5,550), font, 0.5, (0, 255, 255), 2, cv2.LINE_AA)
 
             icon = cv2.resize(icon, (350, 350))
@@ -97,3 +94,4 @@ def Start():
 
     cap.release()
     cv2.destroyAllWindows()
+    return (countScoreOfUser, countScoreofComputer)

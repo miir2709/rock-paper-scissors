@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+    <title>ImaGame</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            ImaGame
+        </div>
+        <ul>
+            <li><a href="#" class='active'>Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Creators</a></li>
+        </ul>
+    </nav>
+
+    <div class="available">
+        <h2>Available Games</h2>
+    </div>
+    <div class="card" style="width: 18rem; background: transparent; border-color: transparent; left: 15%;">
+        <img class="card-img-top" src="{{ url_for('static', filename='rps.jpg') }}" alt="Card image cap" style="border-radius: 50%;">
+        <div class="card-body" style="color: beige; text-align: center;">
+            <h5 class="card-title">Rock Paper Scissors</h5>
+            <p class="card-text">Play Rock Paper Scissors on your PC using WebCam</p>
+            <a href="#" class="btn btn-primary">Download Here</a>
+        </div>
+      </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+</body>
