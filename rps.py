@@ -12,6 +12,28 @@ import imutils
 import time
 
 
+button_style_rule = '''background-color: #00008b;
+                        border-style: outset;
+                        border-width: 2px;
+                        border-radius: 10px;
+                        border-color: beige;
+                        font: bold 14px;
+                        color: white;
+                        min-width: 5em;
+                        padding: 6px;'''
+
+button_style_main = '''background-color: #000000;
+                        border-style: outset;
+                        border-width: 2px;
+                        border-radius: 10px;
+                        border-color: beige;
+                        font: bold 14px;
+                        color: white;
+                        min-width: 3.5em;
+                        padding: 6px;'''
+
+
+
 def winnerOfOneRound(move1, move2, username):
     if move1 == move2:
         return "Tie"
@@ -43,7 +65,7 @@ def Start(model, username, num_rounds):
     #No of rounds
     count = num_rounds
     no = 0
-    font = cv2.FONT_HERSHEY_SIMPLEX
+    font = cv2.FONT_HERSHEY_COMPLEX
     countScoreOfUser = 0
     countScoreofComputer = 0
     countTie = 0
@@ -53,13 +75,13 @@ def Start(model, username, num_rounds):
     while True:
         ret, frame = cap.read()
         frame = cv2.resize(frame, (900, 600))
-        cv2.putText(frame, f"Press 'a' to click the image. Press 'q' to quit the game", (50,450), font, 0.7, (0, 255, 255), 2, cv2.LINE_AA)
+        cv2.putText(frame, f"Press 'a' to click the image. Press 'q' to quit the game", (50,460), font, 0.7, (47, 7, 191), 1, cv2.LINE_AA)
         if not ret:
             continue
-        cv2.rectangle(frame, (50, 50), (400, 400), (255, 255, 255), 2)
-        cv2.rectangle(frame, (450, 50), (800, 400), (255, 255, 255), 2)
+        cv2.rectangle(frame, (50, 60), (400, 410), (31, 6, 18), 2)
+        cv2.rectangle(frame, (450, 60), (800, 410), (31, 6, 18), 2)
         if start:
-            img = frame[50:400, 50:400]
+            img = frame[60:410, 50:400]
             img = np.expand_dims(img, axis=0)
             pred = np.argmax(model.predict(img))
             label = label_names[pred]
@@ -81,12 +103,12 @@ def Start(model, username, num_rounds):
         try:
             #icon = cv2.resize(icon, (400, 400))
             #frame[100:500, 800:1200] = icon
-            cv2.putText(frame, f"{username} Action Round {no} : {label}", (5,50), font, 0.7, (0, 255, 255), 2, cv2.LINE_AA)
-            cv2.putText(frame, f"Winner Of Round {no} : {winner}", (400,50), font, 0.7, (0, 255, 255), 2, cv2.LINE_AA)
-            cv2.putText(frame, f"User Score: {countScoreOfUser} | Computer Score: {countScoreofComputer}", (5,550), font, 0.5, (0, 255, 255), 2, cv2.LINE_AA)
+            cv2.putText(frame, f"{username} Action Round {no} : {label}", (5,45), font, 0.7, (139, 0, 0), 1, cv2.LINE_AA)
+            cv2.putText(frame, f"Winner Of Round {no} : {winner}", (400,45), font, 0.7, (139, 0, 0), 1, cv2.LINE_AA)
+            cv2.putText(frame, f"User Score: {countScoreOfUser} | Computer Score: {countScoreofComputer}", (5,550), font, 0.5, (139, 0, 0), 1, cv2.LINE_AA)
 
             icon = cv2.resize(icon, (350, 350))
-            frame[50:400, 450:800] = icon
+            frame[60:410, 450:800] = icon
             start_time = datatime.now()
         except:
             pass
@@ -130,9 +152,14 @@ class Ui_Dialog(object):
             model = load_model('models/vggmodel_28_02_final.h5')
             MainWindow.hide()
             Dialog.hide()
+            self.window = QtWidgets.QMainWindow()
+            self.ui = Ui_RuleWindow()
+            self.ui.setupUi(self.window)
+            self.window.show()
             username = username.toPlainText()
             
             user, computer = Start(model, username, num_rounds)
+            self.window.close()
             self.window = QtWidgets.QMainWindow()
             self.ui = Ui_ResultWindow()
             self.ui.setupUi(self.window, user, computer, username)
@@ -203,15 +230,15 @@ class Ui_ResultWindow(object):
     def retranslateUi(self, ResultWindow, user, computer, username):
         _translate = QtCore.QCoreApplication.translate
         ResultWindow.setWindowTitle(_translate("ResultWindow", "ResultWindow"))
-        self.label.setText(_translate("ResultWindow", f"{username}: {user}"))
-        self.label_2.setText(_translate("ResultWindow", f"Computer: {computer}"))
+        self.label.setText(_translate("ResultWindow", f"{username} Score: {user}"))
+        self.label_2.setText(_translate("ResultWindow", f"Computer Score: {computer}"))
         if user == computer:
             res = 'Tie'
         elif user > computer:
             res = username
         else:
             res = 'Computer'
-        self.label_3.setText(_translate("ResultWindow", f"Result: {res}"))
+        self.label_3.setText(_translate("ResultWindow", f"The winner of the game is: {res}"))
 
 
 class Ui_MainWindow(object):
@@ -248,11 +275,13 @@ class Ui_MainWindow(object):
         self.label.setWordWrap(True)
         self.label.setObjectName("label")
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(20, 180, 75, 23))
+        self.pushButton.setGeometry(QtCore.QRect(20, 180, 75, 30))
         self.pushButton.setObjectName("pushButton")
+        self.pushButton.setStyleSheet(button_style_main)
         self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_2.setGeometry(QtCore.QRect(120, 180, 75, 23))
+        self.pushButton_2.setGeometry(QtCore.QRect(120, 180, 75, 30))
         self.pushButton_2.setObjectName("pushButton_2")
+        self.pushButton_2.setStyleSheet(button_style_main)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 386, 21))
@@ -268,13 +297,13 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Rock Paper Scissors"))
         self.textBrowser.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><img src=\"images.jpg\" /></p></body></html>"))
-        self.label.setText(_translate("MainWindow", "<html><head><head/><body><p><span style=\" font-size:16pt; font-weight:600; color:#ececec;\">Rock Paper Scissors</span></p></body></html>"))
+        self.label.setText(_translate("MainWindow", "<html><head><head/><body><p><span style=\" font-size:18pt; font-weight:500; color:black; font-family: Verdana;\">Rock Paper Scissors</span></p></body></html>"))
         self.pushButton.setText(_translate("MainWindow", "Rules"))
         self.pushButton.clicked.connect(self.OpenRules)
         self.pushButton_2.setText(_translate("MainWindow", "Start"))
@@ -299,16 +328,18 @@ class Ui_RuleWindow(object):
 
     def setupUi(self, RuleWindow):
         RuleWindow.setObjectName("Rock Paper Scissor - Rules")
-        RuleWindow.setFixedSize(885, 384)
+        #RuleWindow.setFixedSize(900, 385)
+        RuleWindow.setFixedSize(950, 400)
         self.centralwidget = QtWidgets.QWidget(RuleWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.textBrowser = QtWidgets.QTextBrowser(self.centralwidget)
-        self.textBrowser.setGeometry(QtCore.QRect(-390, -60, 1281, 631))
+        self.textBrowser.setGeometry(QtCore.QRect(-5, -5, 1281, 631))
         self.textBrowser.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.textBrowser.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.textBrowser.setObjectName("textBrowser")
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(490, 50, 401, 241))
+        #self.label.setGeometry(QtCore.QRect(490, 50, 401, 241))
+        self.label.setGeometry(QtCore.QRect(335, 50, 550, 300))
         self.label.setObjectName("label")
         RuleWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(RuleWindow)
@@ -319,11 +350,13 @@ class Ui_RuleWindow(object):
         self.statusbar.setObjectName("statusbar")
         RuleWindow.setStatusBar(self.statusbar)
         self.pushButton_1 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_1.setGeometry(QtCore.QRect(200, 30, 75, 23))
+        self.pushButton_1.setGeometry(QtCore.QRect(200, 30, 75, 35))
         self.pushButton_1.setObjectName("pushButton_2")
+        self.pushButton_1.setStyleSheet(button_style_rule)
         self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_2.setGeometry(QtCore.QRect(120, 30, 75, 23))
+        self.pushButton_2.setGeometry(QtCore.QRect(80, 30, 75, 35))
         self.pushButton_2.setObjectName("pushButton_2")
+        self.pushButton_2.setStyleSheet(button_style_rule)
         self.retranslateUi(RuleWindow)
         QtCore.QMetaObject.connectSlotsByName(RuleWindow)
 
@@ -334,9 +367,9 @@ class Ui_RuleWindow(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><img src=\"wp8121942.png\" /></p></body></html>"))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><img src=\"rulesbg.jpg\" /></p></body></html>"))
         self.label.setText(_translate("RuleWindow", "<html><head/>\n"
-"<body><ul><li><p><span style=\" font-size:14pt;\">Allow use of webcam to collect images</span></p></li><li><p><span style=\" font-size:14pt;\">Use three actions : rock, paper, scissors</span></p></li><li><p><span style=\" font-size:14pt;\">Use a plain background</span></p></li><li><p><span style=\" font-size:14pt;\">Rock crushes Scissors</span></p></li><li><p><span style=\" font-size:14pt;\">Scissors cuts Paper</span></p></li><li><p><span style=\" font-size:14pt;\">Paper covers Rock</span></p></li></ul></body></html>"))
+"<body><ul><li><p><span style=\" font-size:13pt; color: #00008b\">Allow use of webcam to collect images</span></p></li><li><p><span style=\" font-size:13pt; color: #00008b\">Use three actions : rock, paper, scissors</span></p></li><li><p><span style=\" font-size:13pt; color: #00008b\">Use a plain background</span></p><li><p><span style=\" font-size:13pt; color: #00008b\">Each player wins against one shape and loses against another</span></p></li></li><li><p><span style=\" font-size:13pt; color: #00008b\">If both players throw the same object, it’s a tie</span></p></li><li><p><span style=\" font-size:13pt; color: #00008b\">Rock crushes Scissors</span></p></li><li><p><span style=\" font-size:13pt; color: #00008b\">Scissors cuts Paper</span></p></li><li><p><span style=\" font-size:13pt; color: #00008b\">Paper covers Rock</span></p></li><li><p><span style=\" font-size:13pt; color: #00008b\">The player who picks the stronger of the two objects is the WINNER</span></p></li></ul></body></html>"))
         self.pushButton_2.setText(_translate("RuleWindow", "Main"))
         self.pushButton_2.clicked.connect(lambda: self.OpenMain(RuleWindow))
         self.pushButton_1.setText(_translate('RuleWindow', 'Start'))
