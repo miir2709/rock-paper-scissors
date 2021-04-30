@@ -103,13 +103,12 @@ def Start(model, username, num_rounds):
         try:
             #icon = cv2.resize(icon, (400, 400))
             #frame[100:500, 800:1200] = icon
-            cv2.putText(frame, f"{username} Action Round {no} : {label}", (5,45), font, 0.7, (139, 0, 0), 1, cv2.LINE_AA)
-            cv2.putText(frame, f"Winner Of Round {no} : {winner}", (400,45), font, 0.7, (139, 0, 0), 1, cv2.LINE_AA)
-            cv2.putText(frame, f"User Score: {countScoreOfUser} | Computer Score: {countScoreofComputer}", (5,550), font, 0.5, (139, 0, 0), 1, cv2.LINE_AA)
-
+            cv2.putText(frame, f"{username} Action : {label}", (50,45), font, 0.7, (139, 0, 0), 1, cv2.LINE_AA)
+            cv2.putText(frame, f"COMP Action : {comp_move}", (460,45), font, 0.7, (139, 0, 0), 1, cv2.LINE_AA)
+            cv2.putText(frame, f"Winner Of Round {no} : {winner}", (50,500), font, 0.7, (139, 0, 0), 1, cv2.LINE_AA)
+            cv2.putText(frame, f"User Score: {countScoreOfUser} | Computer Score: {countScoreofComputer}", (50,550), font, 0.5, (139, 0, 0), 1, cv2.LINE_AA)
             icon = cv2.resize(icon, (350, 350))
             frame[60:410, 450:800] = icon
-            start_time = datatime.now()
         except:
             pass
         cv2.imshow("Rock Paper Scissor Game", frame)
@@ -203,18 +202,47 @@ class Ui_Dialog(object):
 class Ui_ResultWindow(object):
     def setupUi(self, ResultWindow, user, computer, username):
         ResultWindow.setObjectName("ResultWindow")
-        ResultWindow.resize(387, 169)
+        #ResultWindow.resize(387, 169)
+        ResultWindow.resize(400, 300)
         self.centralwidget = QtWidgets.QWidget(ResultWindow)
         self.centralwidget.setObjectName("centralwidget")
+        self.centralwidget.setStyleSheet('''background-color: #99ffff;''')
+        self.result_label = QtWidgets.QLabel(self.centralwidget)
+        self.result_label.setGeometry(QtCore.QRect(0, 20, 400, 40))
+        self.result_label.setObjectName("result_label")
+        self.result_label.setStyleSheet('''
+            font-family: Verdana;
+            color: #00008b;
+            font-size: 22pt;
+            font-weight: 400;
+        ''')
+        self.result_label.setAlignment(QtCore.Qt.AlignCenter)
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(40, 40, 81, 41))
+        self.label.setGeometry(QtCore.QRect(70, 80, 120, 30))
         self.label.setObjectName("label")
+        self.label.setStyleSheet('''
+            font-family: Verdana;
+            color: #00008b;
+            font-size: 16pt;
+        ''')
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setGeometry(QtCore.QRect(150, 40, 71, 41))
+        self.label_2.setGeometry(QtCore.QRect(210, 80, 140, 30))
         self.label_2.setObjectName("label_2")
+        self.label_2.setStyleSheet('''
+            font-family: Verdana;
+            color: #00008b;
+            font-size: 16pt;
+        ''')
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
-        self.label_3.setGeometry(QtCore.QRect(100, 80, 120, 41))
+        self.label_3.setGeometry(QtCore.QRect(0, 140, 400, 30))
         self.label_3.setObjectName("label_3")
+        self.label_3.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_3.setStyleSheet('''
+            font-family: Verdana;
+            color: #00008b;
+            font-size: 24pt;
+            font-weight: 400;
+        ''')
         ResultWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(ResultWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 387, 21))
@@ -230,15 +258,16 @@ class Ui_ResultWindow(object):
     def retranslateUi(self, ResultWindow, user, computer, username):
         _translate = QtCore.QCoreApplication.translate
         ResultWindow.setWindowTitle(_translate("ResultWindow", "ResultWindow"))
-        self.label.setText(_translate("ResultWindow", f"{username} Score: {user}"))
-        self.label_2.setText(_translate("ResultWindow", f"Computer Score: {computer}"))
+        self.label.setText(_translate("ResultWindow", f"{username} : {user}"))
+        self.label_2.setText(_translate("ResultWindow", f"COMP : {computer}"))
+        self.result_label.setText(_translate("Result Window", "SCORE"))
         if user == computer:
             res = 'Tie'
         elif user > computer:
             res = username
         else:
-            res = 'Computer'
-        self.label_3.setText(_translate("ResultWindow", f"The winner of the game is: {res}"))
+            res = 'COMP'
+        self.label_3.setText(_translate("ResultWindow", f"WINNER : {res}"))
 
 
 class Ui_MainWindow(object):
