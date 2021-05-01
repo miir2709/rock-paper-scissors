@@ -73,11 +73,15 @@ def Start(model, username, num_rounds):
     x = 0
     start_time = None
     while True:
+
         ret, frame = cap.read()
         frame = cv2.resize(frame, (900, 600))
         cv2.putText(frame, f"Press 'a' to click the image. Press 'q' to quit the game", (50,460), font, 0.7, (47, 7, 191), 1, cv2.LINE_AA)
         if not ret:
             continue
+        if no == 0:
+            cv2.putText(frame, f"DO ACTION HERE", (50,45), font, 0.7, (139, 0, 0), 1, cv2.LINE_AA)
+        
         cv2.rectangle(frame, (50, 60), (400, 410), (31, 6, 18), 2)
         cv2.rectangle(frame, (450, 60), (800, 410), (31, 6, 18), 2)
         if start:
@@ -262,12 +266,12 @@ class Ui_ResultWindow(object):
         self.label_2.setText(_translate("ResultWindow", f"COMP : {computer}"))
         self.result_label.setText(_translate("Result Window", "SCORE"))
         if user == computer:
-            res = 'Tie'
+            res = 'ITS A DRAW'
         elif user > computer:
-            res = username
+            res = f'WINNER : {username}'
         else:
-            res = 'COMP'
-        self.label_3.setText(_translate("ResultWindow", f"WINNER : {res}"))
+            res = 'WINNER : COMP'
+        self.label_3.setText(_translate("ResultWindow", f"{res}"))
 
 
 class Ui_MainWindow(object):
