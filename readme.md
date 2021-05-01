@@ -4,7 +4,6 @@
 This repo is for Semester VI. The project is a classic Rock-Paper-Scissors game.<br>
 The custom built dataset consists of 3 classes : Rock, Paper, Scissors.
 
-Find the guidelines to follow while playing the game <a href = "RULES.md" >here</a>.
 
 ## Model:
 Please get the **dataset and the model** <a href = "https://drive.google.com/drive/folders/1UKfwxUPQPuvKVmwNQjX9cjEMJ5L1j_Z7?usp=sharing">here</a>. (access restricted to Somaiya Account)
