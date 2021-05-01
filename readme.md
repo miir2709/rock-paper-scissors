@@ -30,14 +30,14 @@ The plot of accuracy, loss, precision and recall are as follows:<br><br>
 ## GUI:
 To build the desktop application, we use <a href = "https://pypi.org/project/PyQt5/">PyQt</a>. You can find some useful tutorials <a href="https://www.youtube.com/playlist?list=PLzMcBGfZo4-lB8MZfHPLTEHO9zJDDLpYj"> here</a>.
 
-### Main Window
-<img src = "images-readme/mainwindow.PNG" alt="mainwindow"  >
-### Rule Window
-<img src = "images-readme/ruleswindow.PNG" alt="ruleswindow"  >
-### Input Window
-<img src = "images-readme/inputwindow.PNG" alt="inputwindow"  >
-### Play Window
-<img src = "images-readme/playwindow1.PNG" alt="playwindow1"  >
-<img src = "images-readme/playwindow2.PNG" alt="playwindow2"  >
-### Result Window
-<img src = "images-readme/resultwindow.PNG" alt="resultwindow"  >
+## Main Window
+<img src = "images-readme/mainwindow.PNG" alt="mainwindow"><br><br>
+## Rule Window
+<img src = "images-readme/ruleswindow.PNG" alt="ruleswindow"><br><br>
+## Input Window
+<img src = "images-readme/inputwindow.PNG" alt="inputwindow"><br>
+## Play Window
+<img src = "images-readme/playwindow1.PNG" alt="playwindow1"><br>
+<img src = "images-readme/playwindow2.PNG" alt="playwindow2"><br>
+## Result Window
+<img src = "images-readme/resultwindow.PNG" alt="resultwindow">
