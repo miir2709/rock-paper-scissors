@@ -32,16 +32,12 @@ To build the desktop application, we use <a href = "https://pypi.org/project/PyQ
 
 ### Main Window
 <img src = "images-readme/mainwindow.PNG" alt="mainwindow"  >
-<br>
 ### Rule Window
 <img src = "images-readme/ruleswindow.PNG" alt="ruleswindow"  >
-<br>
 ### Input Window
 <img src = "images-readme/inputwindow.PNG" alt="inputwindow"  >
-<br>
 ### Play Window
 <img src = "images-readme/playwindow1.PNG" alt="playwindow1"  >
 <img src = "images-readme/playwindow2.PNG" alt="playwindow2"  >
-<br>
 ### Result Window
 <img src = "images-readme/resultwindow.PNG" alt="resultwindow"  >
