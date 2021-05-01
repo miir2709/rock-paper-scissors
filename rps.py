@@ -133,7 +133,7 @@ def Start(model, username, num_rounds):
 
 class Ui_Dialog(object):
 
-    def StartGame(self, num_rounds, username, Dialog):
+    def StartGame(self, username, num_rounds, Dialog):
         flag = 0
         try:
             num_rounds = int(num_rounds.toPlainText())
@@ -171,25 +171,58 @@ class Ui_Dialog(object):
             
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(237, 241)
+        #Dialog.resize(286, 293)
+        Dialog.setFixedSize(286, 293)
 
+        Dialog.setStyleSheet("background-color:#99ffff;\n""")
         self.buttonBox = QtWidgets.QDialogButtonBox(Dialog)
-        self.buttonBox.setGeometry(QtCore.QRect(40, 190, 161, 32))
+        self.buttonBox.setGeometry(QtCore.QRect(60, 230, 171, 32))
+        self.buttonBox.setStyleSheet('''background-color: #00008b;\n
+                        border-style: outset;
+                        border-width: 2px;
+                        border-radius: 10px;
+                        border-color: beige;
+                        font: bold 14px;
+                        color: white;
+                        min-width: 3.8em;
+                        padding: 6px;''')
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
         self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName("buttonBox")
         self.textEdit = QtWidgets.QTextEdit(Dialog)
-        self.textEdit.setGeometry(QtCore.QRect(73, 140, 101, 31))
+        self.textEdit.setGeometry(QtCore.QRect(140, 90, 111, 41))
+        self.textEdit.setStyleSheet("font: 14pt \"Verdana\";\n"
+"background-color: #fff;\n"
+"border-radius: 10px;\n"
+"border-width: 3.5em;\n"
+"")
         self.textEdit.setObjectName("textEdit")
         self.textEdit_2 = QtWidgets.QTextEdit(Dialog)
-        self.textEdit_2.setGeometry(QtCore.QRect(73, 80, 101, 31))
+        self.textEdit_2.setGeometry(QtCore.QRect(140, 160, 111, 41))
+        self.textEdit_2.setStyleSheet("font: 14pt \"Verdana\";\n"
+"background-color: #fff;\n"
+"border-radius: 10px;\n"
+"border-width: 3.5em;\n"
+"")
         self.textEdit_2.setObjectName("textEdit_2")
         self.label = QtWidgets.QLabel(Dialog)
-        self.label.setGeometry(QtCore.QRect(80, 30, 110, 60))
+        self.label.setGeometry(QtCore.QRect(20, 100, 101, 21))
+        self.label.setStyleSheet("font: 14pt \"Verdana\";\n"
+"color: #00008b;\n"
+"")
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(Dialog)
-        self.label_2.setGeometry(QtCore.QRect(80, 100, 100, 60))
+        self.label_2.setGeometry(QtCore.QRect(20, 170, 101, 21))
+        self.label_2.setStyleSheet("font: 14pt \"Verdana\";\n"
+"color: #00008b;\n"
+"")
         self.label_2.setObjectName("label_2")
+        self.label_3 = QtWidgets.QLabel(Dialog)
+        self.label_3.setGeometry(QtCore.QRect(36, 30, 221, 20))
+        self.label_3.setStyleSheet("font-size: 16pt \'Verdana\';\n"
+"color: #00008b;")
+        self.label_3.setObjectName("label_3")
+
         self.retranslateUi(Dialog)
         self.buttonBox.accepted.connect(lambda: self.StartGame(self.textEdit, self.textEdit_2, Dialog))
         self.buttonBox.rejected.connect(Dialog.reject)
@@ -197,9 +230,15 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.label.setText(_translate("Dialog", "Username"))
-        self.label_2.setText(_translate("Dialog", "Number of Rounds"))
+        Dialog.setWindowTitle(_translate("Dialog", "InputWindow"))
+        self.textEdit.setHtml(_translate("Dialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Verdana\'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+        self.label.setText(_translate("Dialog", "Username:"))
+        self.label_2.setText(_translate("Dialog", "# Rounds:"))
+        self.label_3.setText(_translate("Dialog", "ROCK PAPER SCISSOR"))
 
 
 
@@ -371,6 +410,9 @@ class Ui_RuleWindow(object):
         self.textBrowser.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.textBrowser.setObjectName("textBrowser")
         self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setStyleSheet('''
+            font-size: 13.5pt;
+        ''')
         #self.label.setGeometry(QtCore.QRect(490, 50, 401, 241))
         self.label.setGeometry(QtCore.QRect(335, 50, 550, 300))
         self.label.setObjectName("label")
