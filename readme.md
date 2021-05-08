@@ -4,6 +4,7 @@
 This repo is for Semester VI. The project is a classic Rock-Paper-Scissors game.<br>
 The custom built dataset consists of 3 classes : Rock, Paper, Scissors.
 
+Find the guidelines to follow while playing the game <a href = "RULES.md" >here</a>.
 
 ## Model:
 Please get the **dataset and the model** <a href = "https://drive.google.com/drive/folders/1UKfwxUPQPuvKVmwNQjX9cjEMJ5L1j_Z7?usp=sharing">here</a>. (access restricted to Somaiya Account)
@@ -29,14 +30,9 @@ The plot of accuracy, loss, precision and recall are as follows:<br><br>
 ## GUI:
 To build the desktop application, we use <a href = "https://pypi.org/project/PyQt5/">PyQt</a>. You can find some useful tutorials <a href="https://www.youtube.com/playlist?list=PLzMcBGfZo4-lB8MZfHPLTEHO9zJDDLpYj"> here</a>.
 
-## Main Window
-<img src = "images-readme/mainwindow.PNG" alt="mainwindow"><br><br>
-## Rule Window
-<img src = "images-readme/ruleswindow.PNG" alt="ruleswindow"><br><br>
-## Input Window
-<img src = "images-readme/inputwindow.PNG" alt="inputwindow"><br>
-## Play Window
-<img src = "images-readme/playwindow1.PNG" alt="playwindow1"><br><br>
-<img src = "images-readme/playwindow2.PNG" alt="playwindow2"><br>
-## Result Window
-<img src = "images-readme/resultwindow.PNG" alt="resultwindow">
+<img src = "images-readme/mainwindow.PNG" alt="mainwindow"  >
+<img src = "images-readme/ruleswindow.PNG" alt="ruleswindow"  >
+<img src = "images-readme/inputwindow.PNG" alt="inputwindow"  >
+<img src = "images-readme/playwindow1.PNG" alt="playwindow1"  >
+<img src = "images-readme/playwindow2.PNG" alt="playwindow2"  >
+<img src = "images-readme/resultwindow.PNG" alt="resultwindow"  >
